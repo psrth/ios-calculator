@@ -34,7 +34,26 @@ class FitnessCalcState extends State<FitnessCalc> {
           shape: CircleBorder(),
         ),
       );
-    }
+    } // end of button widget
+
+    Widget btnZero(btnText, Color color) {
+      return Container(
+        padding: EdgeInsets.only(bottom: 10.0, top: 10.0),
+        child: new RaisedButton(
+          child: Text(
+            btnText,
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.white,
+            ),
+          ),
+          onPressed: () {},
+          color: color,
+          padding: EdgeInsets.only(left: 85, right: 85, top: 20, bottom: 20),
+          shape: StadiumBorder(),
+        ),
+      );
+    } // end of button zero widget
 
     return new Scaffold(
       appBar: null,
@@ -96,8 +115,7 @@ class FitnessCalcState extends State<FitnessCalc> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              btn('0', const Color(0xff333333)),
-              btn('0', const Color(0xff333333)),
+              btnZero('0', const Color(0xff333333)),
               btn('.', const Color(0xff333333)),
               btn('=', Colors.orange),
             ],
