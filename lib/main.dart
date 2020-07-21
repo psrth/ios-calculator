@@ -46,11 +46,31 @@ class FitnessCalcState extends State<FitnessCalc> {
               fontSize: 30,
               color: Colors.white,
             ),
+            textAlign: TextAlign.left,
           ),
           onPressed: () {},
           color: color,
           padding: EdgeInsets.only(left: 85, right: 85, top: 20, bottom: 20),
           shape: StadiumBorder(),
+        ),
+      );
+    } // end of button zero widget
+
+    Widget btnGrey(btnText, Color color) {
+      return Container(
+        padding: EdgeInsets.only(bottom: 10.0, top: 10.0),
+        child: new RaisedButton(
+          child: Text(
+            btnText,
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.black,
+            ),
+          ),
+          onPressed: () {},
+          color: color,
+          padding: EdgeInsets.all(20.0),
+          shape: CircleBorder(),
         ),
       );
     } // end of button zero widget
@@ -79,9 +99,9 @@ class FitnessCalcState extends State<FitnessCalc> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              btn('C', const Color(0xffa5a5a5)),
-              btn('+/-', const Color(0xffa5a5a5)),
-              btn('%', const Color(0xffa5a5a5)),
+              btnGrey('C', const Color(0xffa5a5a5)),
+              btnGrey('+/-', const Color(0xffa5a5a5)),
+              btnGrey('%', const Color(0xffa5a5a5)),
               btn('÷', Colors.orange),
             ],
           ),
