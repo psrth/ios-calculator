@@ -16,6 +16,15 @@ class FitnessCalc extends StatefulWidget {
 }
 
 class FitnessCalcState extends State<FitnessCalc> {
+  dynamic text = '0';
+  double num1 = 0;
+  double num2 = 0;
+
+  dynamic result = '';
+  dynamic finalResult = '';
+  dynamic opr = '';
+  dynamic preOpr = '';
+
   Widget build(BuildContext buildContext) {
     Widget btn(btnText, Color color) {
       return Container(
@@ -28,7 +37,9 @@ class FitnessCalcState extends State<FitnessCalc> {
               color: Colors.white,
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            calculation(btnText);
+          },
           color: color,
           padding: EdgeInsets.all(20.0),
           shape: CircleBorder(),
@@ -48,7 +59,9 @@ class FitnessCalcState extends State<FitnessCalc> {
             ),
             textAlign: TextAlign.left,
           ),
-          onPressed: () {},
+          onPressed: () {
+            calculation(btnText);
+          },
           color: color,
           padding: EdgeInsets.only(left: 85, right: 85, top: 20, bottom: 20),
           shape: StadiumBorder(),
@@ -67,7 +80,9 @@ class FitnessCalcState extends State<FitnessCalc> {
               color: Colors.black,
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            calculation(btnText);
+          },
           color: color,
           padding: EdgeInsets.all(20.0),
           shape: CircleBorder(),
@@ -77,7 +92,7 @@ class FitnessCalcState extends State<FitnessCalc> {
 
     return new Scaffold(
       appBar: null,
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -85,9 +100,9 @@ class FitnessCalcState extends State<FitnessCalc> {
             children: <Widget>[
               Expanded(
                 child: Text(
-                  '123',
+                  text,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 60.0,
                     // fontFamily:
                   ),
@@ -144,4 +159,74 @@ class FitnessCalcState extends State<FitnessCalc> {
       ),
     );
   } // end of state class
+
+  void calculation(btnText) {
+    if (btnText == 'C') {
+      text = '0';
+      num1 = 0;
+      num2 = 0;
+
+      result = '';
+      finalResult = '';
+      opr = '';
+      preOpr = '';
+    } else if (opr == '=' && preOpr == "=") {
+      if (preOpr == '+') {
+        result = ((num1 + num2).round()).toString();
+        finalResult = result;
+        num1 = double.parse(result);
+      } else if (preOpr == '-') {
+        result = ((num1 - num2).round()).toString();
+        finalResult = result;
+        num1 = double.parse(result);
+      } else if (preOpr == 'X') {
+        result = ((num1 * num2).round()).toString();
+        finalResult = result;
+        num1 = double.parse(result);
+      } else if (preOpr == '÷') {
+        result = ((num1 / num2).round()).toString();
+        finalResult = result;
+        num1 = double.parse(result);
+      }
+    } else if (btnText == '+' ||
+        btnText == '-' ||
+        btnText == 'X' ||
+        btnText == '÷' ||
+        btnText == '=') {
+      if (num1 == 0) {
+        num1 = double.parse(result);
+      } else {
+        num2 = double.parse(result);
+      }
+
+      if (opr == '+') {
+        result = ((num1 + num2).round()).toString();
+        finalResult = result;
+        num1 = double.parse(result);
+      } else if (opr == '-') {
+        result = ((num1 - num2).round()).toString();
+        finalResult = result;
+        num1 = double.parse(result);
+      } else if (opr == 'X') {
+        result = ((num1 * num2).round()).toString();
+        finalResult = result;
+        num1 = double.parse(result);
+      } else if (opr == '÷') {
+        result = ((num1 / num2).round()).toString();
+        finalResult = result;
+        num1 = double.parse(result);
+      }
+
+      preOpr = opr;
+      opr = btnText;
+      result = '';
+    } else {
+      result = result + btnText;
+      finalResult = result;
+    }
+
+    setState(() {
+      text = finalResult;
+    });
+  }
 }
