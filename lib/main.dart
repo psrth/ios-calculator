@@ -5,7 +5,7 @@ void main() => runApp(new FitnessCalculator());
 class FitnessCalculator extends StatelessWidget {
   Widget build(BuildContext buildContext) {
     return new MaterialApp(
-      title: 'Fitness Calculator',
+      title: 'iOS Calculator',
       home: new FitnessCalc(),
     );
   }
@@ -92,7 +92,7 @@ class FitnessCalcState extends State<FitnessCalc> {
 
     return new Scaffold(
       appBar: null,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -102,7 +102,7 @@ class FitnessCalcState extends State<FitnessCalc> {
                 child: Text(
                   text,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 60.0,
                     // fontFamily:
                   ),
